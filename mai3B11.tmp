@@ -29,6 +29,7 @@ transform = Transform3D(0.990658, -0.041358, 0.129944, -0.015169, 0.913565, 0.40
 
 [node name="CameraPivot" type="Node3D" parent="."]
 script = ExtResource("2_nou7g")
+follow_speed = null
 target_path = NodePath("../kadir")
 
 [node name="CameraBoom" type="Node3D" parent="CameraPivot"]

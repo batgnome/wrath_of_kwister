@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyl6vm8cgdomd"]
+
+[ext_resource type="PackedScene" uid="uid://b23d42bojdao5" path="res://Animated Human.fbx" id="1_ya3ao"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2hex1"]
+albedo_color = Color(0.541176, 0, 0.117647, 1)
+
+[node name="kadir" instance=ExtResource("1_ya3ao")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="RootNode/Human Armature" index="0"]
+bones/0/rotation = Quaternion(-0.0387627, -0.370259, -0.0157072, 0.927987)
+bones/1/rotation = Quaternion(0.0167272, 0.0408303, -0.00584629, 0.999009)
+bones/2/rotation = Quaternion(0.0943281, 0.080943, -0.0126264, 0.992165)
+bones/3/rotation = Quaternion(0.0943281, 0.080943, -0.0126264, 0.992165)
+bones/4/rotation = Quaternion(0.0563621, -0.0111047, -7.39002e-05, 0.998349)
+bones/5/rotation = Quaternion(-0.0693635, 0.173877, -0.0217612, 0.982081)
+bones/8/rotation = Quaternion(-0.574506, -0.421592, 0.582693, -0.390733)
+bones/9/rotation = Quaternion(0.42996, -0.0958833, 0.0332564, 0.897126)
+bones/10/rotation = Quaternion(0.0169299, 0.0642341, 0.417897, 0.906062)
+bones/11/rotation = Quaternion(-0.150184, 0.123693, 0.0249865, 0.980572)
+bones/12/rotation = Quaternion(0.262439, 0.303587, 0.205812, 0.892526)
+bones/13/rotation = Quaternion(-0.00659582, -0.198065, -0.00146729, 0.980166)
+bones/17/rotation = Quaternion(0.0471418, -0.00153798, 0.0570844, 0.997255)
+bones/18/rotation = Quaternion(0.150022, -0.00681379, -0.0188463, 0.988479)
+bones/22/rotation = Quaternion(0.624454, -0.382136, 0.543806, 0.410249)
+bones/24/rotation = Quaternion(0.0810829, 0.0153809, -0.360971, 0.928918)
+bones/25/rotation = Quaternion(0.102056, -0.0461098, -0.050285, 0.992436)
+bones/26/rotation = Quaternion(0.165733, -0.152866, -0.254861, 0.940325)
+bones/27/rotation = Quaternion(0.0297378, 0.198954, 0.177757, 0.963294)
+bones/31/rotation = Quaternion(0.0384876, -0.00177016, 0.00980991, 0.999209)
+bones/32/rotation = Quaternion(0.144904, -0.00569366, 0.0116419, 0.989361)
+bones/36/rotation = Quaternion(0.0812795, 0.213535, 0.967655, -0.106959)
+bones/37/rotation = Quaternion(-0.323208, 0.117027, -0.0438085, 0.938042)
+bones/38/rotation = Quaternion(0.622718, 0.0059273, -0.0554615, 0.780455)
+bones/42/rotation = Quaternion(-0.124266, 0.0205781, 0.982958, 0.133896)
+bones/44/rotation = Quaternion(0.719149, 0.0426036, 0.121222, 0.682873)
+
+[node name="Human_Mesh" parent="RootNode/Human Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_2hex1")
