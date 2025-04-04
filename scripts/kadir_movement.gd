@@ -32,6 +32,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -65,8 +66,8 @@ func _physics_process(delta):
 	if is_on_floor():
 		var blend_value = abs(direction.length()) * (1.0 if run_tog else 0.5)
 		animation_tree.set("parameters/MoveBlend/blend_position", blend_value)
-	else:
-		state_machine.travel("jump")
+	
+		
 	#if grounded:
 		#if moving:
 			#if run_tog:
