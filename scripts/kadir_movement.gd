@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 
 const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 9.5
 @onready var camera = $"../CameraPivot/CameraBoom/Camera3d" # Adjust path if needed
 var direction = Vector3.ZERO
 @onready var animation_tree = $kadir/AnimationTree
@@ -28,12 +28,16 @@ func _physics_process(delta):
 	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= gravity * (delta/0.5) 
 
 	# Handle jump.
+	var temp = 0
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		animation_tree.set("parameters/OneShot/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 		velocity.y = JUMP_VELOCITY
+		#var feet = $feet_col
+		#temp = feet.translation
+		#feet.y += 10
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -41,7 +45,16 @@ func _physics_process(delta):
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	#if direction.length() > 0.1:
 		#look_at(global_transform.origin -direction, Vector3.UP)
+	if input_dir.length() > 0:
+		# Get the forward and right vectors from the camera
+		var cam_basis = camera.global_transform.basis
+		var cam_forward = cam_basis.z.normalized()
+		var cam_right = cam_basis.x.normalized()
 
+		# Combine input with camera direction
+		direction = (cam_forward * input_dir.y + cam_right * input_dir.x).normalized()
+	else:
+		direction = Vector3.ZERO
 
 	if direction:
 		velocity.x = direction.x * current_speed
@@ -66,16 +79,5 @@ func _physics_process(delta):
 	if is_on_floor():
 		var blend_value = abs(direction.length()) * (1.0 if run_tog else 0.5)
 		animation_tree.set("parameters/MoveBlend/blend_position", blend_value)
-	
-		
-	#if grounded:
-		#if moving:
-			#if run_tog:
-				#state_machine.travel("run")
-			#else:
-				#state_machine.travel("walk")  # Use exact names
-		#else:
-			#state_machine.travel("idle")
-	#else:
-		#state_machine.travel("jump")
+
 	direction = Vector3.ZERO

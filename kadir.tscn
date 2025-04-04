@@ -3,13 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cyl6vm8cgdomd" path="res://kadir_model.tscn" id="1_1lxwq"]
 [ext_resource type="Script" path="res://scripts/kadir_movement.gd" id="1_of276"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nay14"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wa26l"]
 
 [node name="kadir" type="CharacterBody3D"]
 script = ExtResource("1_of276")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.1962, 0, 0, 0, 2.59327, 0, 0, 0, 1.10551, 0, 2.40852, 0.114192)
-shape = SubResource("CapsuleShape3D_nay14")
-
 [node name="kadir" parent="." instance=ExtResource("1_1lxwq")]
+
+[node name="feet_col" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02741, 0)
+shape = SubResource("CapsuleShape3D_wa26l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
